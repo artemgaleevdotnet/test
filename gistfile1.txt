@@ -1,0 +1,17 @@
+public interface INotifier
+{
+    Task<string> CalcAsync(int id);
+}
+
+public class MyClass
+{
+    INotifier _notifier;
+
+    public Tuple<string, string, string> CalcAll(int p1, int p2, int p3)
+    {
+	    var p1Result = _notifier.CalcAsync(p1).Result;
+	    var p2Result = _notifier.CalcAsync(p2).Result;
+	    var p3Result = _notifier.CalcAsync(p3).Result;
+        return Tuple.Create(p1Result, p2Result, p3Result);
+    }
+}
